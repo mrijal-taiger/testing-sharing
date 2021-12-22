@@ -20,6 +20,12 @@ public class Order {
     }
   }
 
+  public int getTotal() {
+    return lineItems.values().stream()
+        .map(item -> item.getTotal())
+        .reduce(0, (subTotal, lineItemTotal) -> subTotal + lineItemTotal);
+  }
+
   public int lineItemsCount() {
     return lineItems.size();
   }
