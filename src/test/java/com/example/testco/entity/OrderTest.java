@@ -50,4 +50,22 @@ public class OrderTest {
 
     assertEquals(5, order.totalLineItemProductsCount());
   }
+
+  @Test
+  public void getQtyOfProduct() throws Exception {
+    Product product = new Product(1, "Carrot", 10);
+    Order order = Order.create();
+    order.add(product, 1);
+    order.add(product, 1);
+
+    assertEquals(2, order.getProductQty(product));
+  }
+
+  @Test
+  public void getQtyOfProduct_whenProduct_isnot_exists() throws Exception {
+    Product product = new Product(1, "Carrot", 10);
+    Order order = Order.create();
+
+    assertEquals(0, order.getProductQty(product));
+  }
 }

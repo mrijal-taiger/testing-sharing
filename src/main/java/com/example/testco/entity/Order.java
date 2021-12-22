@@ -36,6 +36,14 @@ public class Order {
         .reduce(0, (subTotal, lineItemQty) -> subTotal + lineItemQty);
   }
 
+  public int getProductQty(Product product) {
+    if (lineItems.containsKey(product.getId())) {
+      return lineItems.get(product.getId()).getQty();
+    }
+
+    return 0;
+  }
+
   public static Order create() {
     return new Order();
   }
