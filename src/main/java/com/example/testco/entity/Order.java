@@ -30,6 +30,12 @@ public class Order {
     return lineItems.size();
   }
 
+  public int totalLineItemProductsCount() {
+    return lineItems.values().stream()
+        .map(item -> item.getQty())
+        .reduce(0, (subTotal, lineItemQty) -> subTotal + lineItemQty);
+  }
+
   public static Order create() {
     return new Order();
   }
