@@ -9,7 +9,10 @@ public class Product {
 
   private int price;
 
-  public Product() {}
+  public Product(int id, String name, int price) throws Exception {
+    this(name, price);
+    this.id = id;
+  }
 
   public Product(String name, int price) throws Exception {
     if (price <= 0) {
